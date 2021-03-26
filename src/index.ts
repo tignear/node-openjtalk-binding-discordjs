@@ -4,10 +4,9 @@ export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency" | "d
   dictionary?: string
 };
 class SynthesizedSoundStream extends Readable {
-  wave_p: Promise<boolean>;
-  buf!: Int16Array;
-  destroyed = false;
-  pos: number = 0;
+  private wave_p: Promise<boolean>;
+  private buf!: Int16Array;
+  private pos: number = 0;
   constructor(wave: Promise<WaveObject>) {
     super();
     this.wave_p = wave.then(wave => {
@@ -22,7 +21,7 @@ class SynthesizedSoundStream extends Readable {
       return false;
     });
   }
-  _emitError(err: unknown) {
+  private _emitError(err: unknown) {
     if (!this.destroyed) {
       this.emit("error", err);
     }
@@ -57,7 +56,6 @@ class SynthesizedSoundStream extends Readable {
   }
   _destroy() {
     this.wave_p = Promise.resolve(false);
-    this.destroyed = false;
   }
 }
 /**
