@@ -4,7 +4,9 @@
     "strict": true,
     "target": "es5",
     "moduleResolution": "node",
-    "outDir": "./dest",
-    "declaration": true
+    "module": "commonjs",
+    "outDir": "./dist",
+    "declaration": true,
+    "newLine": "lf"
   }
 }

@@ -1,3 +1,5 @@
+# node-openjtalk-binding-discordjs
+Glue code between node-openjtalk-binding and discordjs.
 ## Install
 ```
 #npm
