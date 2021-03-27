@@ -17,6 +17,10 @@ jobs:
           node-version: '14'
       - run: yarn
       - run: yarn run build
+      - run: |
+          PACKAGE_VERSION=$(cat package.json|jq -r '.version')
+          HOMEPAGE=$(cat package.json|jq -r '.homepage')
+          [[ "v${PACKAGE_VERSION}" == ${HOMEPAGE##*/} ]]
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
