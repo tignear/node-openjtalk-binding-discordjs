@@ -1,6 +1,6 @@
 {
   "name": "node-openjtalk-binding-discordjs",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "(MIT OR Unlicense)",
@@ -8,9 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/tignear/node-openjtalk-binding-discordjs.git"
   },
-  "homepage": "https://tignear.github.io/node-openjtalk-binding-discordjs/v1.0.0-rc.1",
+  "homepage": "https://tignear.github.io/node-openjtalk-binding-discordjs/v1.0.0-rc.2",
   "dependencies": {
-    "node-openjtalk-binding": "^1.0.0-rc.5"
+    "node-openjtalk-binding": "^1.0.0-rc.6"
   },
   "devDependencies": {
     "@discordjs/opus": "^0.5.0",
