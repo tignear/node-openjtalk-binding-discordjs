@@ -639,10 +639,10 @@ node-gyp@^7.1.2:
     tar "^6.0.2"
     which "^2.0.2"
 
-node-openjtalk-binding@^1.0.0-rc.6:
-  version "1.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/node-openjtalk-binding/-/node-openjtalk-binding-1.0.0-rc.6.tgz#18f469e5d291cc8f45cbdb4e87b4b8009e544586"
-  integrity sha512-+DQh0xjdzqDwEHo55XcR7RDPLzbw/vrQzaTu5XYaGnmbtvoLkDpx3pBYQcgIjm0ONiNprro9PH3z3d/nGUEdvw==
+node-openjtalk-binding@^1.0.0-rc.7:
+  version "1.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/node-openjtalk-binding/-/node-openjtalk-binding-1.0.0-rc.7.tgz#1933e9c5fed9be463bda3b392a471739a80f42ef"
+  integrity sha512-pjA+bpOa4MX7sKxnT12+ggOKhzcN/UqbpfzQueeTaC6xv6Tdu2MBD0PBt9As7oIwKJpN6vdLKNsKZWQFZ+HyQA==
   dependencies:
     bindings "^1.5.0"
     node-addon-api "^3.1.0"
