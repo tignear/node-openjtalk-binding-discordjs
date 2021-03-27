@@ -1,10 +1,10 @@
-import { synthesis } from "../dist/index";
-import { Client, Message } from "discord.js";
-import * as path from "path";
+const { synthesis } = require("../dist/index");
+const { Client } = require("discord.js");
+const path  = require("path");
 const prefix = "!";
 const client = new Client();
-const ttsEnabledChannel = new Map<string, Set<string>>();
-async function startCommand(message: Message) {
+const ttsEnabledChannel = new Map();
+async function startCommand(message) {
   const target_vc = message.member?.voice.channel;
   const guild = message.guild;
   if (!guild) {
@@ -31,7 +31,7 @@ async function startCommand(message: Message) {
     ttsEnabledChannel.set(guild.id, new Set([message.channel.id]));
   }
 }
-async function endCommand(message: Message) {
+async function endCommand(message) {
   const guild = message.guild;
   if (!guild) {
     return;
@@ -44,7 +44,7 @@ async function endCommand(message: Message) {
   ttsEnabledChannel.delete(guild.id);
   await message.channel.send(`TTS end: ${target_vc.name}`);
 }
-async function onMessage(message: Message) {
+async function onMessage(message) {
   const content = message.content;
   if (!content.startsWith(prefix)) {
     return;
@@ -63,7 +63,7 @@ async function onMessage(message: Message) {
       break;
   }
 }
-function tts(message: Message) {
+function tts(message) {
   const guild = message.guild;
   if (!guild) {
     return;

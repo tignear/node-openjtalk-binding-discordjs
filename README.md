@@ -10,6 +10,8 @@ yarn add node-openjtalk-binding-discordjs
 
 ## Example
 ```js
+const { synthesis } = require(" node-openjtalk-binding-discordjs");
+
 connection.play(synthesis(message.content, {
   htsvoice: path_to_htsvoice,
 }), {
