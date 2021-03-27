@@ -1,7 +1,7 @@
 # node-openjtalk-binding-discordjs
 Glue code between node-openjtalk-binding and discordjs.
 ## Install
-```
+```sh
 #npm
 npm install node-openjtalk-binding-discordjs
 #yarn

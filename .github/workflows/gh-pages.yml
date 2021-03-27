@@ -1,0 +1,25 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - master
+    tags: 
+        - 'v*'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - uses: actions/setup-node@v1
+      - run: yarn
+      - run: yarn docs
+      - run: |
+          echo "DESTINATION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          destination_dir: ${{ env.DESTINATION }}

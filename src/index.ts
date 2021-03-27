@@ -1,11 +1,16 @@
 import { Readable } from "stream";
 import { synthesis as _synthesis, OpenJTalkOptions as _OpenJTalkOptions, dictionary_dir as _dictionary_dir, WaveObject } from "node-openjtalk-binding";
 /**
- * Redefine OpenJTalkOptions but omit sampling_frequency and be dictionary nullable.
+ * Redefine [OpenJTalkOptions from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#~OpenJTalkOptions).
+ * But omit sampling_frequency and be dictionary nullable. 
  */
 export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency" | "dictionary"> & {
   dictionary?: string
 };
+/**
+ * @private
+ * 48kHz 16bit stereo PCM source from Promise<WaveObject>.
+ */
 class SynthesizedSoundStream extends Readable {
   private wave_p: Promise<boolean>;
   private buf!: Int16Array;
@@ -63,8 +68,10 @@ class SynthesizedSoundStream extends Readable {
 }
 /**
  * Text to voice Stream.
+ * Based on [synthesis from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#.synthesis).
+ * But [[OpenJTalkOptions]] is excluded sampling_frequency. And dictionary is nullable.
  * @param text Text to synthesize.
- * @param options OpenJTalk options excluded sampling_frequency.
+ * @param options 
  * @returns Stream of 48kHz 16bit stereo PCM.
  */
 export function synthesis(text: string, options: OpenJTalkOptions): Readable {
@@ -75,6 +82,6 @@ export function synthesis(text: string, options: OpenJTalkOptions): Readable {
   return new SynthesizedSoundStream(p_wave);
 }
 /**
- * reexports https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#.dictionary_dir
+ * Reexports [dictionary_dir from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#.dictionary_dir).
  */
 export const dictionary_dir = _dictionary_dir;
