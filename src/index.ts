@@ -7,9 +7,9 @@ export const dictionary_dir = _dictionary_dir;
 
 /**
  * Redefine [OpenJTalkOptions from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#~OpenJTalkOptions).
- * But omit sampling_frequency and be dictionary nullable. 
+ * But omit sampling_frequency. 
  */
-export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency" | "dictionary"> & {
+export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency"> & {
   dictionary?: string
 };
 
@@ -76,7 +76,7 @@ class SynthesizedSoundStream extends Readable {
 /**
  * Text to voice Stream.
  * Based on [synthesis from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#.synthesis).
- * But [[OpenJTalkOptions]] is excluded sampling_frequency. And dictionary is nullable.
+ * But [[OpenJTalkOptions]] is excluded sampling_frequency.
  * @param text Text to synthesize.
  * @param options 
  * @returns Stream of 48kHz 16bit stereo PCM.
@@ -85,6 +85,6 @@ export function synthesis(text: string, options: OpenJTalkOptions): Readable {
   if ("sampling_frequency" in options && ((options as any).sampling_frequency != null || (options as any).sampling_frequency != 48000)) {
     throw new TypeError("Do not set sampling_frequency");
   }
-  const p_wave = _synthesis(text, { dictionary: dictionary_dir, ...options, sampling_frequency: 48000 });
+  const p_wave = _synthesis(text, { ...options, sampling_frequency: 48000 });
   return new SynthesizedSoundStream(p_wave);
 }

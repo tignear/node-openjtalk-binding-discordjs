@@ -1,6 +1,7 @@
 const { synthesis } = require("../dist/index");
 const { Client } = require("discord.js");
 const path  = require("path");
+const htsvoice = readFileSync(path.resolve(__dirname, "./hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"));
 const prefix = "!";
 const client = new Client();
 const ttsEnabledChannel = new Map();
@@ -70,7 +71,7 @@ function tts(message) {
   }
   if (ttsEnabledChannel.get(guild.id)?.has(message.channel.id)) {
     const stream = synthesis(message.content, {
-      htsvoice: path.resolve(__dirname, "./hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"),
+      htsvoice,
     });
     stream.on("error", err => console.error("Stream Error:", err));
     guild.me?.voice.connection?.play(stream, {
