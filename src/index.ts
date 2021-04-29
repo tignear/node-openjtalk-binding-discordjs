@@ -9,9 +9,7 @@ export const dictionary_dir = _dictionary_dir;
  * Redefine [OpenJTalkOptions from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#~OpenJTalkOptions).
  * But omit sampling_frequency. 
  */
-export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency"> & {
-  dictionary?: string
-};
+export type OpenJTalkOptions = Omit<_OpenJTalkOptions, "sampling_frequency">;
 
 /**
  * @private
