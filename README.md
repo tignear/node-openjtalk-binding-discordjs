@@ -15,18 +15,41 @@ yarn add node-openjtalk-binding-discordjs
 ```
 
 ## Example
+### v12
 ```js
 const { synthesis } = require("node-openjtalk-binding-discordjs");
+const path  = require("path");
+
+const htsvoice = readFileSync(path_to_htsvoice);
 
 /* ... */
 
 const stream = synthesis(message.content, {
-  htsvoice: path_to_htsvoice,
+  htsvoice,
 });
 stream.on("error",err=>console.error(err));
 connection.play(stream, {
   type: "converted"
 });
+```
+### v13
+```js
+const { synthesis } = require("node-openjtalk-binding-discordjs");
+const path  = require("path");
+
+const htsvoice = readFileSync(path_to_htsvoice);
+
+/* ... */
+
+const stream = synthesis(message.content, {
+  htsvoice,
+});
+const resource = createAudioResource(stream, {
+  inputType: StreamType.Raw,
+});
+stream.on("error", err => console.error("Stream Error:", err));
+
+player.play(resource);
 ```
 
 ## HTSVoice

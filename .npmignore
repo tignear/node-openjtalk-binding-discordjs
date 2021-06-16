@@ -1,0 +1,10 @@
+node_modules
+/.vscode
+*.log
+/docs
+/example
+/.github
+/src
+/tsconfig.json
+/yarn.lock
+/readme.md

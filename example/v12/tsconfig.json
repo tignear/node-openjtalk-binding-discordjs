@@ -1,0 +1,12 @@
+{
+  "include": ["example.ts"],
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "declaration": true,
+    "newLine": "lf"
+  }
+}

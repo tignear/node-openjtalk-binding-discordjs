@@ -1,12 +1,12 @@
-import { synthesis } from "../dist/index";
-import { Client, Message } from "discord.js";
-import * as path from "path";
-import { readFileSync } from "node:fs";
+const { synthesis } = require("../../dist/index");
+const { Client } = require("discord.js");
+const fs = require("fs");
+const path  = require("path");
+const htsvoice = fs.readFileSync(path.resolve(__dirname, "../hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"));
 const prefix = "!";
-const htsvoice = readFileSync(path.resolve(__dirname, "./hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"));
 const client = new Client();
-const ttsEnabledChannel = new Map<string, Set<string>>();
-async function startCommand(message: Message) {
+const ttsEnabledChannel = new Map();
+async function startCommand(message) {
   const target_vc = message.member?.voice.channel;
   const guild = message.guild;
   if (!guild) {
@@ -33,7 +33,7 @@ async function startCommand(message: Message) {
     ttsEnabledChannel.set(guild.id, new Set([message.channel.id]));
   }
 }
-async function endCommand(message: Message) {
+async function endCommand(message) {
   const guild = message.guild;
   if (!guild) {
     return;
@@ -46,7 +46,7 @@ async function endCommand(message: Message) {
   ttsEnabledChannel.delete(guild.id);
   await message.channel.send(`TTS end: ${target_vc.name}`);
 }
-async function onMessage(message: Message) {
+async function onMessage(message) {
   const content = message.content;
   if (!content.startsWith(prefix)) {
     return;
@@ -65,7 +65,7 @@ async function onMessage(message: Message) {
       break;
   }
 }
-function tts(message: Message) {
+function tts(message) {
   const guild = message.guild;
   if (!guild) {
     return;
@@ -84,4 +84,4 @@ client.on("message", message => {
   onMessage(message).catch(err => console.error(err));
   tts(message);
 });
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(process.env.DISCORD_TOKEN);

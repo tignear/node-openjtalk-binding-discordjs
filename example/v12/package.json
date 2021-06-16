@@ -1,0 +1,13 @@
+{
+  "name": "example-v12",
+  "version": "1.0.0",
+  "main": "example.js",
+  "license": "Unlicense",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.3",
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.2"
+  }
+}
