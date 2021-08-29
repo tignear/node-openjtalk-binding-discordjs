@@ -80,7 +80,7 @@ class SynthesizedSoundStream extends Readable {
  * @returns Stream of 48kHz 16bit stereo PCM.
  */
 export function synthesis(text: string, options: OpenJTalkOptions): Readable {
-  if ("sampling_frequency" in options && ((options as any).sampling_frequency != null || (options as any).sampling_frequency != 48000)) {
+  if ("sampling_frequency" in options && (options as any).sampling_frequency != null && (options as any).sampling_frequency !== 48000) {
     throw new TypeError("Do not set sampling_frequency");
   }
   const p_wave = _synthesis(text, { ...options, sampling_frequency: 48000 });
