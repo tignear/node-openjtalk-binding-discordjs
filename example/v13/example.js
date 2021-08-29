@@ -1,12 +1,12 @@
 const { synthesis } = require("../../dist/index");
-const { Client, Message, Intents } = require("discord.js");
+const { Client, Intents } = require("discord.js");
 const path = require("path");
 const { readFileSync } = require("fs");
-const { AudioPlayer, createAudioPlayer, createAudioResource, entersState, getVoiceConnection, joinVoiceChannel, NoSubscriberBehavior, StreamType, VoiceConnection, VoiceConnectionStatus } = require("@discordjs/voice");
+const { createAudioPlayer, createAudioResource, entersState, getVoiceConnection, joinVoiceChannel, NoSubscriberBehavior, StreamType, VoiceConnectionStatus } = require("@discordjs/voice");
 const prefix = "!";
 const htsvoice = readFileSync(path.resolve(__dirname, "../hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"));
 const client = new Client({
-  intents: Intents.NON_PRIVILEGED
+  intents: Intents.FLAGS.GUILDS | Intents.FLAGS.GUILD_VOICE_STATES | Intents.FLAGS.GUILD_MESSAGES
 });
 
 const ttsEnabledChannel = new Map();
@@ -107,7 +107,7 @@ function tts(message) {
     context.player.play(resource);
   }
 }
-client.on("message", message => {
+client.on("messageCreate", message => {
   onMessage(message).catch(err => console.error(err));
   tts(message);
 });

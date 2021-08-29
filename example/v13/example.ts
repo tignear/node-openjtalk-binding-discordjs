@@ -6,7 +6,7 @@ import { AudioPlayer, createAudioPlayer, createAudioResource, entersState, getVo
 const prefix = "!";
 const htsvoice = readFileSync(path.resolve(__dirname, "../hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"));
 const client = new Client({
-  intents: Intents.NON_PRIVILEGED
+  intents: Intents.FLAGS.GUILDS | Intents.FLAGS.GUILD_VOICE_STATES | Intents.FLAGS.GUILD_MESSAGES
 });
 interface TTSContext {
   player: AudioPlayer,
