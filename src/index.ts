@@ -1,4 +1,4 @@
-import { Readable } from "stream";
+import { PassThrough, Readable } from "stream";
 import { synthesis as _synthesis, OpenJTalkOptions as _OpenJTalkOptions, dictionary_dir as _dictionary_dir, WaveObject } from "node-openjtalk-binding";
 /**
  * Reexports [dictionary_dir from node-openjtalk-binding](https://tignear.github.io/node-openjtalk-binding/master/module-node-openjtalk-binding.html#.dictionary_dir).
@@ -85,4 +85,21 @@ export function synthesis(text: string, options: OpenJTalkOptions): Readable {
   }
   const p_wave = _synthesis(text, { ...options, sampling_frequency: 48000 });
   return new SynthesizedSoundStream(p_wave);
+}
+
+/**
+ * Close the stream immediately if an error occurs.
+ * @param stream Errors that occur in this stream are passed to the handler and not to the return stream. 
+ * @param handler Error handler.
+ * @returns An error-free stream.  
+ */
+export function silenceOnError(stream: Readable, handler?: (err: Error) => unknown): Readable {
+  const r = new PassThrough();
+  stream.on("error", (err) => {
+    r.push(null);
+    if(handler){
+      handler(err);
+    }
+  });
+  return stream.pipe(r);
 }

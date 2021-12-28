@@ -1,4 +1,4 @@
-const { synthesis } = require("../../dist/index");
+const { synthesis, silenceOnError } = require("../../dist/index");
 const { Client } = require("discord.js");
 const fs = require("fs");
 const path  = require("path");
@@ -71,10 +71,10 @@ function tts(message) {
     return;
   }
   if (ttsEnabledChannel.get(guild.id)?.has(message.channel.id)) {
-    const stream = synthesis(message.content, {
+    const stream = silenceOnError(synthesis(message.content, {
       htsvoice,
-    });
-    stream.on("error", err => console.error("Stream Error:", err));
+    }),err => console.error("Stream Error:", err));
+
     guild.me?.voice.connection?.play(stream, {
       type: "converted"
     });

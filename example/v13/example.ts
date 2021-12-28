@@ -1,4 +1,4 @@
-import { synthesis } from "../../dist/index";
+import { synthesis, silenceOnError } from "../../dist/index";
 import { Client, Message, Intents } from "discord.js";
 import * as path from "path";
 import { readFileSync } from "fs";
@@ -99,13 +99,13 @@ function tts(message: Message) {
   }
   const context = ttsEnabledChannel.get(guild.id);
   if (context?.channels.has(message.channel.id)) {
-    const stream = synthesis(message.content, {
+    const stream = silenceOnError(synthesis(message.content, {
       htsvoice,
-    });
+    }), err => console.error("Stream Error:", err));
+
     const resource = createAudioResource(stream, {
       inputType: StreamType.Raw,
     });
-    stream.on("error", err => console.error("Stream Error:", err));
 
     context.player.play(resource);
   }

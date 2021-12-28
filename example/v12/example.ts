@@ -1,4 +1,4 @@
-import { synthesis } from "../../dist/index";
+import { synthesis, silenceOnError } from "../../dist/index";
 import { Client, Message } from "discord.js";
 import * as path from "path";
 import { readFileSync } from "fs";
@@ -71,10 +71,10 @@ function tts(message: Message) {
     return;
   }
   if (ttsEnabledChannel.get(guild.id)?.has(message.channel.id)) {
-    const stream = synthesis(message.content, {
+    const stream = silenceOnError(synthesis(message.content, {
       htsvoice,
-    });
-    stream.on("error", err => console.error("Stream Error:", err));
+    }), err => console.error("Stream Error:", err));
+
     guild.me?.voice.connection?.play(stream, {
       type: "converted"
     });

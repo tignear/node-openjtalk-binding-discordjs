@@ -41,13 +41,13 @@ const htsvoice = readFileSync(path_to_htsvoice);
 
 /* ... */
 
-const stream = synthesis(message.content, {
+const stream = silenceOnError(synthesis(message.content, {
   htsvoice,
-});
+}),err => console.error("Stream Error:", err));
+
 const resource = createAudioResource(stream, {
   inputType: StreamType.Raw,
 });
-stream.on("error", err => console.error("Stream Error:", err));
 
 player.play(resource);
 ```
