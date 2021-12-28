@@ -109,13 +109,13 @@
 
 <span style="color: #008000">/* ... */</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">stream</span><span style="color: #000000"> = </span><span style="color: #795E26">synthesis</span><span style="color: #000000">(</span><span style="color: #001080">message</span><span style="color: #000000">.</span><span style="color: #001080">content</span><span style="color: #000000">, {</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">stream</span><span style="color: #000000"> = </span><span style="color: #795E26">silenceOnError</span><span style="color: #000000">(</span><span style="color: #795E26">synthesis</span><span style="color: #000000">(</span><span style="color: #001080">message</span><span style="color: #000000">.</span><span style="color: #001080">content</span><span style="color: #000000">, {</span>
 <span style="color: #000000">  </span><span style="color: #001080">htsvoice</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+<span style="color: #000000">}),</span><span style="color: #001080">err</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">error</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Stream Error:&quot;</span><span style="color: #000000">, </span><span style="color: #001080">err</span><span style="color: #000000">));</span>
+
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">resource</span><span style="color: #000000"> = </span><span style="color: #795E26">createAudioResource</span><span style="color: #000000">(</span><span style="color: #001080">stream</span><span style="color: #000000">, {</span>
 <span style="color: #000000">  </span><span style="color: #001080">inputType:</span><span style="color: #000000"> </span><span style="color: #001080">StreamType</span><span style="color: #000000">.</span><span style="color: #001080">Raw</span><span style="color: #000000">,</span>
 <span style="color: #000000">});</span>
-<span style="color: #001080">stream</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;error&quot;</span><span style="color: #000000">, </span><span style="color: #001080">err</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">error</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Stream Error:&quot;</span><span style="color: #000000">, </span><span style="color: #001080">err</span><span style="color: #000000">));</span>
 
 <span style="color: #001080">player</span><span style="color: #000000">.</span><span style="color: #795E26">play</span><span style="color: #000000">(</span><span style="color: #001080">resource</span><span style="color: #000000">);</span>
 </code></pre>
@@ -140,6 +140,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="modules.html#dictionary_dir" class="tsd-kind-icon">dictionary_<wbr>dir</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#silenceonerror" class="tsd-kind-icon">silence<wbr>OnError</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#synthesis" class="tsd-kind-icon">synthesis</a>

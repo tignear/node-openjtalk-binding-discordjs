@@ -76,6 +76,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="modules.html#silenceonerror" class="tsd-kind-icon">silence<wbr>OnError</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#synthesis" class="tsd-kind-icon">synthesis</a></li>
 							</ul>
 						</section>
@@ -90,7 +91,7 @@
 					<div class="tsd-signature tsd-kind-icon">OpenJTalk<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">_OpenJTalkOptions</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;sampling_frequency&quot;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/e47c6d9/src/index.ts#L12">index.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/386b930/src/index.ts#L12">index.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -109,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">dictionary_<wbr>dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/e47c6d9/src/index.ts#L6">index.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/386b930/src/index.ts#L6">index.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,6 +123,62 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="silenceonerror" class="tsd-anchor"></a>
+					<h3>silence<wbr>OnError</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">silence<wbr>OnError<span class="tsd-signature-symbol">(</span>stream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, handler<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/386b930/src/index.ts#L96">index.ts:96</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Close the stream immediately if an error occurs.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>stream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Errors that occur in this stream are passed to the handler and not to the return stream.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> handler: <span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">unknown</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Error handler.</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>err: <span class="tsd-signature-type">Error</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Readable</span></h4>
+							<p>An error-free stream.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="synthesis" class="tsd-anchor"></a>
 					<h3>synthesis</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -131,7 +188,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/e47c6d9/src/index.ts#L82">index.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/tignear/node-openjtalk-binding-discordjs/blob/386b930/src/index.ts#L82">index.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,6 +232,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="modules.html#dictionary_dir" class="tsd-kind-icon">dictionary_<wbr>dir</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#silenceonerror" class="tsd-kind-icon">silence<wbr>OnError</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#synthesis" class="tsd-kind-icon">synthesis</a>
