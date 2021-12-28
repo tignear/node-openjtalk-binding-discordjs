@@ -17,7 +17,7 @@ yarn add node-openjtalk-binding-discordjs
 ## Example
 ### v12
 ```js
-const { synthesis } = require("node-openjtalk-binding-discordjs");
+const { synthesis, silenceOnError } = require("node-openjtalk-binding-discordjs");
 const path  = require("path");
 
 const htsvoice = readFileSync(path_to_htsvoice);
@@ -34,7 +34,7 @@ connection.play(stream, {
 ```
 ### v13
 ```js
-const { synthesis } = require("node-openjtalk-binding-discordjs");
+const { synthesis, silenceOnError } = require("node-openjtalk-binding-discordjs");
 const path  = require("path");
 
 const htsvoice = readFileSync(path_to_htsvoice);
