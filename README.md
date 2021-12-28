@@ -24,10 +24,10 @@ const htsvoice = readFileSync(path_to_htsvoice);
 
 /* ... */
 
-const stream = synthesis(message.content, {
+const stream = silenceOnError(synthesis(message.content, {
   htsvoice,
-});
-stream.on("error",err=>console.error(err));
+}),err => console.error("Stream Error:", err));
+
 connection.play(stream, {
   type: "converted"
 });
