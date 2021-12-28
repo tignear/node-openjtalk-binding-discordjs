@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/tignear/node-openjtalk-binding-discordjs.git"
   },
-  "homepage": "https://tignear.github.io/node-openjtalk-binding-discordjs/v1.0.0",
+  "homepage": "https://tignear.github.io/node-openjtalk-binding-discordjs/v1.1.0",
   "dependencies": {
     "node-openjtalk-binding": "^1.1.1"
   },
